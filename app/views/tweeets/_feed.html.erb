@@ -6,9 +6,9 @@
     </p>
     </figure>
   <div class="media-content">
+    <%= render 'tweeets/form'%>
 
-
-
+  </div>
   </article>
 </div>
 
@@ -28,7 +28,7 @@
           <small>@webcrunch</small><br />
           <p><%= tweeet.tweeet %> </p>
         </div>
-      </div>
+      
       <nav class="level">
         <div class="level-left is-mobile">
           <%= link_to tweeet, class: "levell-item" do %>
@@ -43,6 +43,8 @@
         <% end %>
         </div>
       </nav>
+      </div>
     </article>
   </div>
 <% end %>
+</div>
