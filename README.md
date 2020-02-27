@@ -33,7 +33,7 @@ $ rails server
 
 ## For more information
 
-- [ ] [Follow this video](#).
+- [ ] [Follow this video](https://www.youtube.com/watch?v=5gUysPm64a4&t=1629s).
 
 ## License
 
