@@ -12,7 +12,72 @@ On top of the Tweeets, I used gem called Devise which makes creating an entire u
 - [ ] Ruby on Rails version 5.1.4
 - [ ] bcrypt version 3.1.7 ([bcrypt()](https://github.com/codahale/bcrypt-ruby) allows you to easily harden your application against these kinds of attacks.)
 - [ ] I used [bulma](https://bulma.io/) instead of [bootstrap-sass](https://www.rubydoc.info/gems/bootstrap-sass/3.3.6) 
-- [ ] Devise version 4.3
+
+- [ ] [better_errors](https://rubygems.org/gems/better_errors/versions/2.1.1) version 2.4, this gem provides a better error page for Rails and other Rack apps. Includes source code inspection, a live REPL and local/instance variable inspection for all stack frames.
+- [ ] [simple_form](https://rubygems.org/gems/simple_form) version 3.5 don`t forgot to visit home page of [simple_form](https://github.com/heartcombo/simple_form) here instructions and run next command if you don`t use bootastrap:
+
+    rails generate simple_form:install
+
+- [ ] [gravatar_image_tag](https://rubygems.org/gems/gravatar_image_tag) versio 1.2 .A configurable and documented Rails view helper for adding gravatars into your Rails application.
+
+- [ ] [Devise](https://rubygems.org/gems/devise) version 4.3 .Flexible authentication solution for Rails with Warden. Devise [home page](https://github.com/heartcombo/devise)
+
+    rails generate devise:install
+
+At this point, a number of instructions will appear in the console. Among these instructions, you'll need to set up the default URL options for the Devise mailer in each environment. Here is a possible configuration for config/environments/development.rb:
+
+    config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+
+After we should add next to views/layouts/application.html.erb :
+
+        <% if flash[:notice] %>
+        <div class="notification is-primary global-notification">
+        <p class="notice"><%= notice %></p>
+        </div>
+        <% end %>
+        <% if flash[:alert] %>
+        <div class="notification is-danger global-notification">
+        <p class="alert"><%= alert %></p>
+        </div>
+        <% end %>
+
+And run next command:
+
+    rails g devise:views
+
+    rails g devise User
+
+## Header:
+
+add next to views/layouts/application.html.erb 
+
+        <nav class="navbar is-info">
+        <div class="navbar-brand">
+        <%= link_to root_path, class: "navbar-item" do %>
+        <h1 class="title is-5">twittter</h1>
+        <% end %>
+            <div class="navbar-burger burger" data-target="navbarExample">
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+        </div>
+
+        <div id="navbarExample" class="navbar-menu">
+        <div class="navbar-end">
+            <div class="field is-grouped">
+            <p class="control">
+        <%= link_to 'New Tweeet', new_tweeet_path, class:"button is-info is-inverted"
+        %>
+                </p>
+                <p class="control">Sign Up</p>
+                    </div>
+                </div>
+                </div>
+            </nav>
+            <%= yield %>
 
 ## Getting started
 

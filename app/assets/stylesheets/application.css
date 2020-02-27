@@ -24,10 +24,11 @@
  .image{
    border-radius: 50%;
  }
-   .image img{
+  .image img{
     border-radius: 50%;
-  }
+ }
  
- .notifications:not(:last-child){
+ .notifications:not(:last-child),
+ .notification:not(:last-child){
    margin-bottom: 0;
  }
