@@ -105,6 +105,10 @@ If the test suite passes, you'll be ready to run the app in a local server:
 $ rails server
 ```
 
+## Tesing with rspec
+
+* [Testing with RSpec .](https://medium.com/@gracemugoiri/testing-with-rspec-4e8fb6dd7057)
+
 ## For more information
 
 - [ ] [Follow this video](https://www.youtube.com/watch?v=5gUysPm64a4&t=1629s).
