@@ -48,6 +48,8 @@ And run next command:
 
     rails g devise User
 
+    rails db:migrate
+
 ## Header:
 
 add next to views/layouts/application.html.erb 
