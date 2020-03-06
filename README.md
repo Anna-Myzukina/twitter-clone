@@ -50,6 +50,49 @@ And run next command:
 
     rails db:migrate
 
+
+
+Next step its authentification 
+
+add next in controller/tweeets_controller.rb
+
+    before_action :authenticate_usr!, except: [:index, :show]
+
+add in controller/registration_controller.rb
+
+        class RegistrationsController < Devise::RegistrationsController
+
+        private
+
+        def sign_up_params
+            params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
+
+        end
+
+        def acount_update_params
+            params.require(:user).permit(:name, :username, :email, :password, :password_confirmation, :current_password)
+        end
+        end
+
+
+After run command:
+
+    rails g migration AddFieldsToUsers
+
+Then add next to db/migrate/xxxxxxxxxxx_add_fields_to_user.rb
+
+        class AddFieldsToUsers < ActiveRecord::Migration[5.1]
+        def change
+            add_column :users, :name, :string
+            add_column :users, :username, :string
+            add_index :users, :username, unique: true 
+        end
+        end
+
+After run next command:
+
+    rails db:migrate
+    
 ## Header:
 
 add next to views/layouts/application.html.erb 
