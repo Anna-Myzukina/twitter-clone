@@ -7,6 +7,36 @@ The app itself will feature a basic CRUD principle where we can:
 * and destroy Tweeets. 
 On top of the Tweeets, I used gem called Devise which makes creating an entire user role and authentication system easy. Combined with this gem we can authenticate users who want to author Tweeets. A user's Tweeets are then also tied to their account. The end result is a public facing site with a stream of tweets from different users. Users that have an account can login to create their own Tweeets to add to the public stream.
 
+## Getting started
+
+To get started with the app, clone the repo and then install the needed gems:
+
+```
+$ bundle install --without production
+```
+
+Next, migrate the database:
+
+```
+$ rails db:migrate
+```
+
+Finally, run the test suite to verify that everything is working correctly:
+
+```
+$ rails test
+```
+
+If the test suite passes, you'll be ready to run the app in a local server:
+
+```
+$ rails server
+```
+
+## Tesing with rspec
+
+* [Testing with RSpec .](https://medium.com/@gracemugoiri/testing-with-rspec-4e8fb6dd7057)
+
 ## Environment
 
 - [ ] Ruby on Rails version 5.1.4
@@ -82,11 +112,11 @@ After run command:
 Then add next to db/migrate/xxxxxxxxxxx_add_fields_to_user.rb
 
         class AddFieldsToUsers < ActiveRecord::Migration[5.1]
-        def change
+          def change
             add_column :users, :name, :string
             add_column :users, :username, :string
             add_index :users, :username, unique: true 
-        end
+          end
         end
 
 After run next command:
@@ -124,35 +154,66 @@ add next to views/layouts/application.html.erb
             </nav>
             <%= yield %>
 
-## Getting started
+## Sign up form
 
-To get started with the app, clone the repo and then install the needed gems:
+Replace code in app/views/devise/registrations/new.html.erb
 
-```
-$ bundle install --without production
-```
+        <div class="section">
+          <div class="container">
+            <div class="columns is-centered">
 
-Next, migrate the database:
+                <div class="column is-4">
+                <h2 class="title is-2">Sign Up</h2>
 
-```
-$ rails db:migrate
-```
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.error_notification %>
 
-Finally, run the test suite to verify that everything is working correctly:
 
-```
-$ rails test
-```
+            <div class="field">
+                <div class="control">
+                    <%= f.input :email,
+                            required: true,
+                            autofocus: true,
+                            input_html: { class: "input" },
+                            wrapper: false,
+                            label_html: {class: "label"} %>
+                </div>
+            </div>              
 
-If the test suite passes, you'll be ready to run the app in a local server:
+            <div class="field">
+                <div class="control">
+                    <%= f.input :password,
+                            required: true,
+                            hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                            input_html: { class: "input" },
+                            wrapper: false,
+                            label_html: {class: "label"} %>
+                </div>
+            </div>
+            
+            <div class="field">
+                <div class="control">
+                    <%= f.input :password_confirmation,
+                            required: true,
+                            input_html: { class: "input" },
+                            wrapper: false,
+                            label_html: {class: "label"} %>
+                </div>
+            </div>
 
-```
-$ rails server
-```
+            <div class="field">
+                <div class="control">
+                <%= f.button :submit, "Sign up", class:"button is-info is-medium" %>
+                </div>
+            </div>
+            <% end %>
+            <br />
+            <%= render "devise/shared/links" %>
+                </div>
+                </div>
+            </div>
+            </div>
 
-## Tesing with rspec
-
-* [Testing with RSpec .](https://medium.com/@gracemugoiri/testing-with-rspec-4e8fb6dd7057)
 
 ## For more information
 
