@@ -76,15 +76,15 @@ And run next commands:
 
 * first
 
-    rails g devise:views
+    `rails g devise:views`
 
 * second
 
-    rails g devise User
+    `rails g devise User`
 
 * third
 
-    rails db:migrate
+    `rails db:migrate`
 
 
 
