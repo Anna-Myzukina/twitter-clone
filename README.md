@@ -158,7 +158,7 @@ add next to views/layouts/application.html.erb
 
 Replace code in app/views/devise/registrations/new.html.erb
 
-        <div class="section">
+        <section class="section">
           <div class="container">
             <div class="columns is-centered">
 
@@ -212,7 +212,125 @@ Replace code in app/views/devise/registrations/new.html.erb
                 </div>
                 </div>
             </div>
+            </section>
+
+
+Replace code in app/views/devise/registrations/edit.html.erb
+
+        <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+            <div class="column is-4">
+                
+            <h2 class="title is-2">Edit <%= resource_name.to_s.humanize %></h2>
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                <%= f.error_notification %>
+
+                <div class="field">
+                    <div class="control">
+                    <%= f.input :name, required: true, autofocus: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                    <%= f.input :username, required: true,  input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                    <%= f.input :email, required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+                    </div>
+                </div>
+
+                <div class="field">
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                    <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                <% end %>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                    <%= f.input :password_confirmation, required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+                    </div>
+                </div>
+        
+                <%= f.button :submit, "Update", class:"button is-info" %>
+            
+            <% end %>
+
+                <hr />
+                <h3 class="title is-5">Cancel my account</h3>
+                <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+        
             </div>
+            </div>
+        </div>
+        </section>
+
+## Log in form
+
+In app/views/devise/sessions/new.html.erb
+
+
+            <section class="section">
+            <div class="container">
+                <div class="columns is-centered">
+
+                <div class="column is-4">
+                <h2 class="title is-2">Log in</h2>
+
+            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="field">
+                <div class="control">
+                    <%= f.input :email,
+                            required: false,
+                            autofocus: true,
+                            input_html: { class: "input" },
+                            wrapper: false,
+                            label_html: {class: "label"} %>
+                </div>
+                </div>
+
+                <div class="field">
+                <div class="control">
+                    <%= f.input :password,
+                            required: false,
+                            input_html: { class: "input" },
+                            wrapper: false,
+                            label_html: {class: "label"} %>
+                </div>
+                </div>
+
+                <div class="field">
+                <div class="control">
+                    <%= f.input :remember_me, wrapper: false, as: :boolean if devise_mapping.rememberable? %>
+                </div>
+                </div>
+
+
+                    <%= f.button :submit, "Log in", class: "button is-info is-medium" %>
+            <% end %>
+            <br />
+            <%= render "devise/shared/links" %>
+
+                </div>
+                </div>
+            </div>
+            </section>
 
 
 ## For more information
