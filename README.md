@@ -374,18 +374,73 @@ Should be next output:
         irb(main):005:0> @user = User
         => User(id: integer, email: string, encrypted_password: string, reset_password_token: string, reset_password_sent_at: datetime, remember_created_at: datetime, created_at: datetime, updated_at: datetime, name: string, username: string)
 
+After run @user.last
+
+and in output you can see last name: nil, username: nil to fix this add next to app/config/routes.rb
+
+      devise_for :users, :controllers => { registrations: 'registrations'}
+
 After type
 
     @tweeet = Tweeet
-
+    
 Should be next output:
 
     irb(main):004:0> @tweeet = Tweeet
     => Tweeet(id: integer, tweeet: text, created_at: datetime, updated_at: datetime, user_id: integer) 
 
+To test method destroy type next:
+
+    @user = @user.last
+
+    @user.destroy
+
+Should be next output:
+
+        irb(main):012:0> @user.destroy
+        (0.2ms)  begin transaction
+        SQL (3.2ms)  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 1]]
+        (39.4ms)  commit transaction
+
+Then type
+
+         @user = User
+
+You should see next 
+
+        => User(id: integer, email: string, encrypted_password: string, reset_password_token: string, reset_password_sent_at: datetime, remember_created_at: datetime, created_at: datetime, updated_at: datetime, name: string, username: string)
+
+Last command 
+
+    @user.all
+
+Should shows you empty array:
+
+        User Load (2.9ms)  SELECT  "users".* FROM "users" LIMIT ?  [["LIMIT", 11]]
+        => #<ActiveRecord::Relation []>
+
     If you get the same output my congratulation your migration is working you can run `exit`
 
 
+## Main changes in controllers
+
+Change method new app/controllers/tweeets_controller.rb
+
+        def new
+            @tweeet = current_user.tweeets.build
+        end
+
+Make changes in method create
+
+        def create
+            @tweeet = current_user.tweeets.build(tweeet_params)
+
+
+## Current user rendering
+
+In file app/views/tweeets/_feed.html.erb replase code with next: (here main it`s to use instead of your previous name next: <strong><%= tweeet.user.name %></strong><br />
+          <small><%= tweeet.user.username %></small><br />
+          <p><%= tweeet.tweeet %>)
 ## For more information
 
 - [ ] [Follow this video](https://www.youtube.com/watch?v=5gUysPm64a4&t=1629s).
