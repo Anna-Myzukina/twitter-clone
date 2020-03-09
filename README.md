@@ -72,11 +72,17 @@ After we should add next to views/layouts/application.html.erb :
         </div>
         <% end %>
 
-And run next command:
+And run next commands:
+
+* first
 
     rails g devise:views
 
+* second
+
     rails g devise User
+
+* third
 
     rails db:migrate
 
@@ -368,14 +374,18 @@ Should be next output:
         irb(main):005:0> @user = User
         => User(id: integer, email: string, encrypted_password: string, reset_password_token: string, reset_password_sent_at: datetime, remember_created_at: datetime, created_at: datetime, updated_at: datetime, name: string, username: string)
 
+After type
+
     @tweeet = Tweeet
+
+Should be next output:
 
     irb(main):004:0> @tweeet = Tweeet
     => Tweeet(id: integer, tweeet: text, created_at: datetime, updated_at: datetime, user_id: integer) 
 
     If you get the same output my congratulation your migration is working you can run `exit`
 
-    
+
 ## For more information
 
 - [ ] [Follow this video](https://www.youtube.com/watch?v=5gUysPm64a4&t=1629s).
