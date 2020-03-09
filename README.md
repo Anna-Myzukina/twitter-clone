@@ -332,7 +332,50 @@ In app/views/devise/sessions/new.html.erb
             </div>
             </section>
 
+## Users relationship
 
+Add next code to app/models/user.rb
+
+    has_many :tweeets
+
+app/models/tweeet.rb
+
+    belongs_to :user
+
+After let`s add migration
+run first command
+
+    rails g migration AddUserIdToTweeets user_id:integer
+
+run second command
+
+    rails db:migrate
+
+## Testing our migration
+
+Open console by running next command
+
+    rails c
+
+To test our users let`s type
+
+    User.connection
+
+    @user = User
+
+Should be next output:
+
+        irb(main):005:0> @user = User
+        => User(id: integer, email: string, encrypted_password: string, reset_password_token: string, reset_password_sent_at: datetime, remember_created_at: datetime, created_at: datetime, updated_at: datetime, name: string, username: string)
+
+    @tweeet = Tweeet
+
+    irb(main):004:0> @tweeet = Tweeet
+    => Tweeet(id: integer, tweeet: text, created_at: datetime, updated_at: datetime, user_id: integer) 
+
+    If you get the same output my congratulation your migration is working you can run `exit`
+
+    
 ## For more information
 
 - [ ] [Follow this video](https://www.youtube.com/watch?v=5gUysPm64a4&t=1629s).
