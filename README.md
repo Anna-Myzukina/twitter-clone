@@ -438,9 +438,13 @@ Make changes in method create
 
 ## Current user rendering
 
-In file app/views/tweeets/_feed.html.erb replase code with next: (here main it`s to use instead of your previous name next: <strong><%= tweeet.user.name %></strong><br />
-          <small><%= tweeet.user.username %></small><br />
-          <p><%= tweeet.tweeet %>)
+In file app/views/tweeets/_feed.html.erb replase code with next: (here main it`s to use instead of your previous name next: 
+
+       ` <strong><%= tweeet.user.name %></strong><br />
+                <small><%= tweeet.user.username %></small><br />
+                <p><%= tweeet.tweeet %> `
+
+
 ## For more information
 
 - [ ] [Follow this video](https://www.youtube.com/watch?v=5gUysPm64a4&t=1629s).
