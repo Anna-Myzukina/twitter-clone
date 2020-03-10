@@ -445,14 +445,21 @@ In file app/views/tweeets/_feed.html.erb replase code with next: (here main it`s
                 <p><%= tweeet.tweeet %> `
 
 
-## For more information
+## Acknowledgments
 
 - [ ] [Follow this video](https://www.youtube.com/watch?v=5gUysPm64a4&t=1629s).
 
-## License
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## 📝 License
 
 - [ ] See [LICENSE.md](LICENSE.md) for details.
 
 ## Authors
 
 - [ ] [Muzykina Anna](https://github.com/Anna-Myzukina)
+- Github: [@githubhandle](https://github.com/Anna-Myzukina)
+- Twitter: [@twitterhandle](https://twitter.com/AnnaMuzykina)
+- Linkedin: [linkedin](https://www.linkedin.com/in/ann-muzykina/)
