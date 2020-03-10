@@ -444,6 +444,11 @@ In file app/views/tweeets/_feed.html.erb replase code with next: (here main it`s
                 <small><%= tweeet.user.username %></small><br />
                 <p><%= tweeet.tweeet %> `
 
+## Deploy to cherocky
+
+https://www.railstutorial.org/book/beginning#sec-deploying
+
+
 
 ## Acknowledgments
 
